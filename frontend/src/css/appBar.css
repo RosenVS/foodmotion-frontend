@@ -1,0 +1,15 @@
+.logo{
+    width: 130px;
+    height: auto;
+}
+  
+.appBarLoginBtn:hover {
+  background-color: #1e293b;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .appBarLoginBtn {
+    padding: 1rem 2rem;
+  }
+}

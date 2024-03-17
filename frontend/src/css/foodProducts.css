@@ -1,0 +1,17 @@
+.centered-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%; /* Optional: Adjust as needed */
+ }
+ 
+ .data-grid-container {
+   width: 80%; /* Optional: Adjust as needed */
+ }
+ #loadingAnimation {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 50vh;
+ }
+  

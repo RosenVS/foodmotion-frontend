@@ -1,0 +1,111 @@
+body{
+    background: #c6c4c4;
+   
+}
+
+.h1{
+    font-family: Arial, Helvetica, sans-serif;
+    width:50%;
+color:white;
+background: black;
+border-radius: 2rem;
+padding: 0.4rem;
+}
+.newSection{
+    color:white;
+background: black;
+border-radius: 2rem;
+padding: 0.4rem;
+
+}
+
+.h2, .newSection{
+    width:50%;
+    display: inline-block;
+}
+
+.newSection > span{
+color: #dc1921;
+}
+.contactUsButton{
+  cursor: pointer;
+  font-size: 1.4rem;
+  width:20%;
+}
+.contactUsButton:hover{
+ font-size: 1.5rem;
+}
+.h3{
+    text-align: center;
+    width:75%;
+    margin-left: 1rem;
+}
+
+#imageList{
+    width: 100%;
+    height: 450px;
+    transform: 'translateZ(0)';
+    background: transparent;
+}
+
+.images{
+    float:right;
+}
+
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 1500px;
+  }
+  .flex-segment {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .segment-one p {
+    margin-bottom: 2rem;
+  }
+  
+  .segment-one-btn {
+    margin-bottom: rem;
+  }
+  
+  
+.segment-two-flex-group {
+    flex-direction: row-reverse;
+  }
+  
+  .segment-two p {
+    margin-bottom: 2rem;
+  }
+  .section-eight h4 {
+    margin: 1rem 0;
+    font-size: 1.25rem;
+  }
+  
+  .section-three p {
+    line-height: 1.5rem;
+  }
+  
+  .section-three img {
+    
+  }
+  
+  .flex-group-three {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  @media (max-width: 800px) {
+    .flex-group-three {
+      flex-direction: column;
+    }
+    .contactUsButton{
+     
+      width:40%;
+    }
+  }
+
+  
