@@ -93,7 +93,7 @@ import axios from 'axios';
 export  const fetchFoodProducts=()=>{
   return axios({
       method:'GET',
-      url:`/api/food-product`,
+      url:`https://foodmotion-food-products-service-ud3f4nfe5a-ew.a.run.app/api/food-product`,
       withCredentials: false,
      
   })
