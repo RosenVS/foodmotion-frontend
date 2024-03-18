@@ -94,17 +94,16 @@ export  const fetchFoodProducts=()=>{
   return axios({
       method:'GET',
       url:`/api/food-product`,
-      headers:{
-    }
+      withCredentials: false,
+     
   })
 }
 export const deleteFoodProduct = (id) => {
 return axios({
   method: 'DELETE',
   url: `/api/food-product/${id}`,
-  headers: {
-    // Add any headers if needed
-  }
+  withCredentials: false,
+
 });
 };
 
@@ -112,19 +111,17 @@ export const updateFoodProduct = (updatedProduct) => {
 return axios({
   method: 'PUT',
   url: `/api/food-product/${updatedProduct.id}`,
+  withCredentials: false,
   data: updatedProduct,
-  headers: {
-    // Add headers if needed
-  }
+ 
 });
 };
 export const createFoodProduct = (updatedProduct) => {
 return axios({
   method: 'POST',
   url: `/api/food-product`,
+  withCredentials: false,
   data: updatedProduct,
-  headers: {
-    // Add headers if needed
-  }
+
 });
 };
