@@ -206,11 +206,31 @@ const columns = [
     )
   },
 ];
+// const fetchData = async () => {
+//   try {
+//     const response = await fetchFoodProducts();
+//     if (response != null) {
+
+//       console.log(response.data)
+//       const data = response.data.map(product => ({
+//         ...product,
+//         id: product.id,
+//         name: product.name,
+//         nutrition: product.nutrition,
+//         actions: product.id // Just to include ID for demonstration purposes
+//       }));
+//       setFoodProducts(data);
+//     }
+//   } catch (error) {
+//     console.error('Error fetching food products:', error);
+//   } finally {
+//     setLoading(false);
+//   }
+// };
+
 const fetchData = async () => {
-  try {
-    const response = await fetchFoodProducts();
-    if (response != null) {
-      
+  fetchFoodProducts().then((response)=>{
+    if(response != null){
       console.log(response.data)
       const data = response.data.map(product => ({
         ...product,
@@ -221,66 +241,102 @@ const fetchData = async () => {
       }));
       setFoodProducts(data);
     }
-  } catch (error) {
-    console.error('Error fetching food products:', error);
-  } finally {
-    setLoading(false);
-  }
+}).catch((e)=>{
+})
+setLoading(false);
 };
   useEffect(() => {
     
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      // Make the DELETE request to delete the food product
-      await deleteFoodProduct(id);
+  // const handleDelete = async (id) => {
+  //   try {
+  //     // Make the DELETE request to delete the food product
+  //     await deleteFoodProduct(id);
   
-      // Remove the deleted product from the list
-      setFoodProducts(prevProducts => prevProducts.filter(product => product.id !== id));
-    } catch (error) {
-      console.error('Error deleting food product:', error);
-    } finally {
-      // Close the form
-      handleCancel();
-    }
+  //     // Remove the deleted product from the list
+  //     setFoodProducts(prevProducts => prevProducts.filter(product => product.id !== id));
+  //   } catch (error) {
+  //     console.error('Error deleting food product:', error);
+  //   } finally {
+  //     // Close the form
+  //     handleCancel();
+  //   }
+  // };
+  const handleDelete = async (id) => {
+    deleteFoodProduct(id).then((response)=>{
+      if(response.status==200){
+        console.log(response.status)
+        setFoodProducts(prevProducts => prevProducts.filter(product => product.id !== id));
+        handleCancel();
+      }
+    }).catch((e)=>{
+    })
+    
   };
-  const handleCreate = async (createProduct) => {
-    console.log(createProduct)
-    try {
-      // Make the PUT request to update the food product
-      await createFoodProduct(createProduct);
+  // const handleCreate = async (createProduct) => {
+  //   console.log(createProduct)
+  //   try {
+  //     // Make the PUT request to update the food product
+  //     await createFoodProduct(createProduct);
       
-      fetchData();
-    } catch (error) {
-      console.error('Error creating food product:', error);
-    } finally {
-      // Close the form
-      handleCancel();
-    }
+  //     fetchData();
+  //   } catch (error) {
+  //     console.error('Error creating food product:', error);
+  //   } finally {
+  //     // Close the form
+  //     handleCancel();
+  //   }
+   
+  // };
+  const handleCreate =  (createProduct) => {
+    console.log(createProduct)
+    createFoodProduct(createProduct).then((response)=>{
+      if(response.status==201){
+        console.log(response.status)
+        fetchData();
+        handleCancel();
+      }
+    }).catch((e)=>{
+    })
    
   };
-  const handleUpdate = async (updatedProduct) => {
-    console.log(updatedProduct)
-    try {
-      // Make the PUT request to update the food product
-      await updateFoodProduct(updatedProduct);
+  // const handleUpdate = async (updatedProduct) => {
+  //   console.log(updatedProduct)
+  //   try {
+  //     // Make the PUT request to update the food product
+  //     await updateFoodProduct(updatedProduct);
       
-      // Update the product in the list with the new values
-      setFoodProducts(prevProducts =>
-        prevProducts.map(product =>
-          product.id === updatedProduct.id ? updatedProduct : product
-        )
-      );
-    } catch (error) {
-      console.error('Error updating food product:', error);
-    } finally {
-      // Close the form
-      handleCancel();
-    }
-  };
+  //     // Update the product in the list with the new values
+  //     setFoodProducts(prevProducts =>
+  //       prevProducts.map(product =>
+  //         product.id === updatedProduct.id ? updatedProduct : product
+  //       )
+  //     );
+  //   } catch (error) {
+  //     console.error('Error updating food product:', error);
+  //   } finally {
+  //     // Close the form
+  //     handleCancel();
+  //   }
+  // };
+  const handleUpdate = async (updatedProduct) => {
+    updateFoodProduct(updatedProduct).then((response)=>{
+      if(response.status==200){
+        console.log(response.status)
+        console.log(updatedProduct)
+        setFoodProducts(prevProducts =>
+          prevProducts.map(product =>
+            product.id === updatedProduct.id ? updatedProduct : product
+          ) );
+          handleCancel();
+      }
+    }).catch((e)=>{
+    })
 
+  
+  };
   const handleCancel = () => {
     // Close the form
     setOpenDeleteForm(false);
