@@ -90,41 +90,36 @@ import axios from 'axios';
 
 
 // Cloud-Run -----------------------------------------------
-export  const fetchFoodProducts=()=>{
+export const fetchFoodProducts = () => {
   return axios({
-      method:'GET',
-      url:`${process.env.hostUrl||''}/api/food-product`,
-      headers:{
-    }
-  })
+    method: 'GET',
+    url: '/api/food-product', // Using relative URL
+    headers: {}
+  });
 }
+
 export const deleteFoodProduct = (id) => {
-return axios({
-  method: 'DELETE',
-  url: `${process.env.hostUrl || ''}/api/food-product/${id}`,
-  headers: {
-    // Add any headers if needed
-  }
-});
+  return axios({
+    method: 'DELETE',
+    url: `/api/food-product/${id}`, // Using relative URL
+    headers: {}
+  });
 };
 
 export const updateFoodProduct = (updatedProduct) => {
-return axios({
-  method: 'PUT',
-  url: `${process.env.hostUrl || ''}/api/food-product/${updatedProduct.id}`,
-  data: updatedProduct,
-  headers: {
-    // Add headers if needed
-  }
-});
+  return axios({
+    method: 'PUT',
+    url: `/api/food-product/${updatedProduct.id}`, // Using relative URL
+    data: updatedProduct,
+    headers: {}
+  });
 };
+
 export const createFoodProduct = (updatedProduct) => {
-return axios({
-  method: 'POST',
-  url: `${process.env.hostUrl || ''}/api/food-product`,
-  data: updatedProduct,
-  headers: {
-    // Add headers if needed
-  }
-});
+  return axios({
+    method: 'POST',
+    url: '/api/food-product', // Using relative URL
+    data: updatedProduct,
+    headers: {}
+  });
 };

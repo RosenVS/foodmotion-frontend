@@ -210,6 +210,7 @@ const fetchData = async () => {
   try {
     const response = await fetchFoodProducts();
     if (response != null) {
+      
       console.log(response.data)
       const data = response.data.map(product => ({
         ...product,
