@@ -90,17 +90,27 @@ import axios from 'axios';
 
 
 // Cloud-Run -----------------------------------------------
-export  const fetchFoodProducts=()=>{
+// export  const fetchFoodProducts=()=>{
+//   return axios({
+//       method:'GET',
+//       url:`https://foodmotion-food-products-service-ud3f4nfe5a-ew.a.run.app/api/food-product`,
+//       withCredentials: false,
+//       headers: {
+//         "Cache-Control": "no-cache",
+//         "Content-Type": "application/json",
+//       }
+//   })
+// }
+export const fetchFoodProducts = () => {
   return axios({
-      method:'GET',
-      url:`https://foodmotion-food-products-service-ud3f4nfe5a-ew.a.run.app/api/food-product`,
-      withCredentials: false,
-      headers: {
-        "Cache-Control": "no-cache",
-        "Content-Type": "application/json",
-      }
-  })
-}
+    method: 'GET',
+    url: '/api/food-product',
+    withCredentials: false,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
 export const deleteFoodProduct = (id) => {
 return axios({
   method: 'DELETE',
