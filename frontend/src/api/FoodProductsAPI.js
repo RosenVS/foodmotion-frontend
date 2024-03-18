@@ -95,7 +95,11 @@ export  const fetchFoodProducts=()=>{
       method:'GET',
       url:`https://foodmotion-food-products-service-ud3f4nfe5a-ew.a.run.app/api/food-product`,
       withCredentials: false,
-     
+      headers: {
+        "Cache-Control": "no-cache",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Origin": "*",
+      },
   })
 }
 export const deleteFoodProduct = (id) => {
