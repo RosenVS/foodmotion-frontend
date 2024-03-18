@@ -231,7 +231,7 @@ const columns = [
 const fetchData = async () => {
   fetchFoodProducts().then((response)=>{
     if(response != null){
-      console.log(response.data)
+      console.log(response)
       const data = response.data.map(product => ({
         ...product,
         id: product.id,

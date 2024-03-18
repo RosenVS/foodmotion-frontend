@@ -9,7 +9,6 @@ import Homepage from './pages/Homepage'
 import FoodProducts from './pages/FoodProducts'
 
 import './App.css'
-
 function App () {
   return (
     <div className='App'>
