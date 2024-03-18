@@ -97,9 +97,8 @@ export  const fetchFoodProducts=()=>{
       withCredentials: false,
       headers: {
         "Cache-Control": "no-cache",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
-      },
+        "Content-Type": "application/json",
+      }
   })
 }
 export const deleteFoodProduct = (id) => {
