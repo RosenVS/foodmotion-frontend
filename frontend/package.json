@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://foodmotion-food-products-service-ud3f4nfe5a-ew.a.run.app",
+  "proxy": "https://foodmotion-api-gateway-89ft3qao.ew.gateway.dev",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
