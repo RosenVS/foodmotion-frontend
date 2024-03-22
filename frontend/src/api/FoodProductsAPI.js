@@ -101,6 +101,16 @@ import axios from 'axios';
 //       }
 //   })
 // }
+export const testConnection = () => {
+  return axios({
+    method: 'GET',
+    url: '/api/food-product/test',
+    withCredentials: false,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
 export const fetchFoodProducts = () => {
   return axios({
     method: 'GET',
