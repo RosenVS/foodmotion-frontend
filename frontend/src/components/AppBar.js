@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,8 +16,8 @@ import '../css/appBar.css';
 import companyLogo from '../images/Logo.png'; 
 
 const ResponsiveAppBar = () => {
-const [pages, setPages] = useState([{ name: 'Food Products', href: 'manager/food-products'}]);
-const [settings,setSettings] =useState([ { name: 'Logout'}]);
+const [pages, setPages] = useState([{ name: 'Food Products', href: 'manager/food-products'},{ name: 'Food Products 2', href: 'daily-nutrition/food-products'}]);
+const [settings,setSettings] =useState([ { name: 'Logout'},{ name: 'Account', href: 'account'}]);
 const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -43,7 +43,24 @@ const [anchorElNav, setAnchorElNav] = React.useState(null);
       window.location.reload(false);
     }
 }
+const AccountClick=(param)=>{
+  if(param=='Account'){
+    localStorage.clear();
+    console.log('User has successfully logged out')
+    window.location.reload(false);
+  }
+}
+useEffect(() => {
+  const getTokenFromLocalStorage = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      const decodedToken = JSON.parse(atob(accessToken.split('.')[1]));
+      setData(decodedToken);
+    }
+  };
 
+  getTokenFromLocalStorage();
+}, []);
 
 const [data,setData]=useState({});
 
@@ -56,7 +73,7 @@ const [data,setData]=useState({});
     <AppBar position="static" className="appBar2">
       <Container maxWidth="xl" className="appBar">
         <Toolbar disableGutters>
-          <Typography variant="h6"noWrap component="a" href="/" >
+        <Typography variant="h6"noWrap component="a" href="/" >
           <img className="logo" src={companyLogo} alt="" />
             
           </Typography>
@@ -64,13 +81,16 @@ const [data,setData]=useState({});
             <IconButton size="large" aria-label="account of current user"aria-controls="menu-appbar"aria-haspopup="true"onClick={handleOpenNavMenu}color="inherit">
               <MenuIcon />
             </IconButton>
+            
             <Menu id="menu-appbar"anchorEl={anchorElNav}anchorOrigin={{vertical: 'bottom',horizontal: 'left',}}keepMounted transformOrigin={{vertical: 'top',horizontal: 'left',}}open={Boolean(anchorElNav)}onClose={handleCloseNavMenu}sx={{display: { xs: 'block', md: 'none' },}}>
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center" href="/" >
+                    
                   <Button variant="contained"  className={page.id}  href={"/"+page.href} id={page.id}    key={page.name}>
                 {page.name}
               </Button>
+              
                     </Typography>
                 </MenuItem>
               ))}
@@ -88,12 +108,12 @@ const [data,setData]=useState({});
               </Button>
             ))}
           </Box>
-          {data.userName != null ?
+          {data.email != null ?
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={"https://ui-avatars.com/api/?name="+data.firstName+"+"+data.lastName+"&background=ffffff"} />
-              </IconButton>
+  <Avatar alt="User Avatar" src={`https://ui-avatars.com/api/?name=${data.email.charAt(0)}&background=ffffff`} />
+</IconButton>
             </Tooltip>
            <Menu sx={{ mt: '45px' }}id="menu-appbar"anchorEl={anchorElUser}anchorOrigin={{vertical: 'top',horizontal: 'right',}}keepMounted transformOrigin={{vertical: 'top',horizontal: 'right',}}open={Boolean(anchorElUser)}onClose={handleCloseUserMenu}>
          

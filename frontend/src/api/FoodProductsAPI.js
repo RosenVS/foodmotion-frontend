@@ -101,50 +101,117 @@ import axios from 'axios';
 //       }
 //   })
 // }
-export const testConnection = () => {
+// export const testConnection = () => {
+//   return axios({
+//     method: 'GET',
+//     url: 'http://localhost:8080/api/food-product/test',
+//     withCredentials: false,
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+// };
+// export const fetchFoodProducts = () => {
+//   return axios({
+//     method: 'GET',
+//     url: 'http://localhost:8080/api/food-product',
+//     withCredentials: false,
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+// };
+// export const deleteFoodProduct = (id) => {
+// return axios({
+//   method: 'DELETE',
+//   url: `htp://localhost:8080/api/food-product/${id}`,
+//   withCredentials: false,
+
+// });
+// };
+
+// export const updateFoodProduct = (updatedProduct) => {
+// return axios({
+//   method: 'PUT',
+//   url: `http://localhost:8080/api/food-product/${updatedProduct.id}`,
+//   withCredentials: false,
+//   data: updatedProduct,
+ 
+// });
+// };
+// export const createFoodProduct = (updatedProduct) => {
+// return axios({
+//   method: 'POST',
+//   url: `http://localhost:8080/api/food-product`,
+//   withCredentials: false,
+//   data: updatedProduct,
+
+// });
+// };
+
+
+
+const getAccessToken = () => {
+  return localStorage.getItem("accessToken");
+};
+
+export const testConnection = async() => {
   return axios({
     method: 'GET',
-    url: '/api/food-product/test',
+    url: 'http://localhost:8080/api/food-product/test',
     withCredentials: false,
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAccessToken()}`
     },
   });
 };
+
 export const fetchFoodProducts = () => {
   return axios({
     method: 'GET',
-    url: '/api/food-product',
+    url: 'http://localhost:8080/api/food-product',
+    withCredentials: false,
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   'Authorization': `Bearer ${getAccessToken()}`
+    // },
+  });
+};
+
+export const deleteFoodProduct = (id) => {
+  return axios({
+    method: 'DELETE',
+    url: `http://localhost:8080/api/food-product/${id}`,
     withCredentials: false,
     headers: {
-      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAccessToken()}`
     },
   });
 };
-export const deleteFoodProduct = (id) => {
-return axios({
-  method: 'DELETE',
-  url: `/api/food-product/${id}`,
-  withCredentials: false,
-
-});
-};
 
 export const updateFoodProduct = (updatedProduct) => {
-return axios({
-  method: 'PUT',
-  url: `/api/food-product/${updatedProduct.id}`,
-  withCredentials: false,
-  data: updatedProduct,
- 
-});
+  return axios({
+    method: 'PUT',
+    url: `http://localhost:8080/api/food-product/${updatedProduct.id}`,
+    withCredentials: false,
+    data: updatedProduct,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAccessToken()}`
+    },
+  });
 };
-export const createFoodProduct = (updatedProduct) => {
-return axios({
-  method: 'POST',
-  url: `/api/food-product`,
-  withCredentials: false,
-  data: updatedProduct,
 
-});
+export const createFoodProduct = (newProduct) => {
+  return axios({
+    method: 'POST',
+    url: `http://localhost:8080/api/food-product`,
+    withCredentials: false,
+    data: newProduct,
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${getAccessToken()}`
+    },
+  });
 };

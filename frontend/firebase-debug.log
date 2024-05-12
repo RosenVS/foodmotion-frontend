@@ -1,0 +1,619 @@
+[debug] [2024-04-22T08:21:45.285Z] ----------------------------------------------------------------------
+[debug] [2024-04-22T08:21:45.286Z] Command:       /opt/homebrew/Cellar/node/21.7.3/bin/node /opt/homebrew/bin/firebase deploy --only functions
+[debug] [2024-04-22T08:21:45.287Z] CLI Version:   13.7.3
+[debug] [2024-04-22T08:21:45.287Z] Platform:      darwin
+[debug] [2024-04-22T08:21:45.287Z] Node Version:  v21.7.3
+[debug] [2024-04-22T08:21:45.287Z] Time:          Mon Apr 22 2024 10:21:45 GMT+0200 (Central European Summer Time)
+[debug] [2024-04-22T08:21:45.287Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-22T08:21:45.321Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-22T08:21:45.321Z] > authorizing via signed-in user (rosen200262@gmail.com)
+[debug] [2024-04-22T08:21:45.321Z] [iam] checking project root-fort-412616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-04-22T08:21:45.322Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions [none]
+[debug] [2024-04-22T08:21:45.322Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:21:45.322Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:21:45.528Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions 200
+[debug] [2024-04-22T08:21:45.528Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:21:45.529Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-04-22T08:21:45.529Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-04-22T08:21:46.428Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-04-22T08:21:46.429Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'root-fort-412616'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-04-22T08:21:46.432Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:21:46.744Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:21:46.744Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-04-22T08:21:46.746Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-04-22T08:21:46.746Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:21:46.748Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-04-22T08:21:46.748Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:21:46.749Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [none]
+[debug] [2024-04-22T08:21:46.749Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:21:46.750Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [none]
+[debug] [2024-04-22T08:21:46.750Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:21:47.635Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com 200
+[debug] [2024-04-22T08:21:47.635Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-04-22T08:21:47.637Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com 200
+[debug] [2024-04-22T08:21:47.637Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-04-22T08:21:47.639Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com 200
+[debug] [2024-04-22T08:21:47.640Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-04-22T08:21:47.641Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com 200
+[debug] [2024-04-22T08:21:47.641Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-04-22T08:21:47.642Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig [none]
+[debug] [2024-04-22T08:21:47.889Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig 200
+[debug] [2024-04-22T08:21:47.889Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig {"projectId":"root-fort-412616","storageBucket":"root-fort-412616.appspot.com","locationId":"europe-west2"}
+[debug] [2024-04-22T08:21:47.891Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs [none]
+[debug] [2024-04-22T08:21:48.274Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs 200
+[debug] [2024-04-22T08:21:48.275Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs {}
+[debug] [2024-04-22T08:21:48.278Z] Validating nodejs source
+[debug] [2024-04-22T08:21:48.696Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-04-22T08:21:48.696Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-04-22T08:21:48.696Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-04-22T08:21:48.700Z] Found firebase-functions binary at '/Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8171
+
+[debug] [2024-04-22T08:21:48.942Z] Got response from /__/functions.yaml {"endpoints":{"addCustomClaimsOnUserCreation":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","eventFilters":{"resource":"projects/root-fort-412616"},"retry":false},"labels":{},"entryPoint":"addCustomClaimsOnUserCreation"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions (68.44 KB) for uploading 
+[debug] [2024-04-22T08:21:53.981Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions [none]
+[debug] [2024-04-22T08:21:54.489Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:21:54.489Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions {"functions":[{"name":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation","eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/root-fort-412616","service":"firebaseauth.googleapis.com","failurePolicy":{}},"status":"ACTIVE","entryPoint":"addCustomClaimsOnUserCreation","timeout":"60s","availableMemoryMb":256,"serviceAccountEmail":"root-fort-412616@appspot.gserviceaccount.com","updateTime":"2024-04-17T23:11:35.112Z","versionId":"1","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"01ae7dbed26275c8097ec55321ba136705ac6c50"},"sourceUploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/64b76aaf-31e2-4a96-8369-2ab904957d2e.zip","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"root-fort-412616","EVENTARC_CLOUD_EVENT_SOURCE":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"},"runtime":"nodejs18","maxInstances":3000,"ingressSettings":"ALLOW_ALL","buildId":"f620c67b-8fa2-4751-b648-06ccc94f663d","buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""},"buildName":"projects/647460229344/locations/us-central1/builds/f620c67b-8fa2-4751-b648-06ccc94f663d","dockerRegistry":"ARTIFACT_REGISTRY","automaticUpdatePolicy":{}}]}
+[debug] [2024-04-22T08:21:54.492Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-04-22T08:21:55.452Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:21:55.452Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions {}
+[debug] [2024-04-22T08:21:55.456Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:21:55.747Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:21:55.747Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[debug] [2024-04-22T08:21:55.749Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2024-04-22T08:21:55.750Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2024-04-22T08:21:56.464Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2024-04-22T08:21:56.464Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775916&Signature=UOtkayvZ%2BRam3HrByrcSUJkKYZ%2FMLs0IzD%2BkDbA51g6TJu6dPWgmdcX2%2B%2F6J4mWI6riw5R%2FbNuQn%2B4eWCdiuU5fgtJRXu4xfShkwBECtZxW3lDk63%2FdDHSzXgum%2Fv59fwbP7TVdOIFepD5vRrNn3xbS5S5eMBdZSv9fhDJISJgU3Kc%2Bg1WjDB98JnvyHCQBO6Wr6D%2FIRLM1l05dBb2nN%2FAo6R%2Fd%2FeMm5qTAenW2xTEPJbmHyW%2Bu9fNJo9KJyQ%2FXbmdwL0QSzoyj%2FnNEtTg6QzlK2sTtsYRZ0FgQn2bpKLPzkDgOhxT%2FiJ%2BOS8UsfSaQirv9z%2F2Dm8TfAiMIfj54PkA%3D%3D"}
+[debug] [2024-04-22T08:21:56.465Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip GoogleAccessId=service-647460229344%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775916&Signature=UOtkayvZ%2BRam3HrByrcSUJkKYZ%2FMLs0IzD%2BkDbA51g6TJu6dPWgmdcX2%2B%2F6J4mWI6riw5R%2FbNuQn%2B4eWCdiuU5fgtJRXu4xfShkwBECtZxW3lDk63%2FdDHSzXgum%2Fv59fwbP7TVdOIFepD5vRrNn3xbS5S5eMBdZSv9fhDJISJgU3Kc%2Bg1WjDB98JnvyHCQBO6Wr6D%2FIRLM1l05dBb2nN%2FAo6R%2Fd%2FeMm5qTAenW2xTEPJbmHyW%2Bu9fNJo9KJyQ%2FXbmdwL0QSzoyj%2FnNEtTg6QzlK2sTtsYRZ0FgQn2bpKLPzkDgOhxT%2FiJ%2BOS8UsfSaQirv9z%2F2Dm8TfAiMIfj54PkA%3D%3D
+[debug] [2024-04-22T08:21:56.465Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip [stream]
+[debug] [2024-04-22T08:21:57.178Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip 200
+[debug] [2024-04-22T08:21:57.178Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: updating Node.js 18 (1st Gen) function addCustomClaimsOnUserCreation(us-central1)... 
+[debug] [2024-04-22T08:21:57.185Z] >>> [apiv2][query] PATCH https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation updateMask=name%2CsourceUploadUrl%2CentryPoint%2Cruntime%2CdockerRegistry%2Clabels%2CeventTrigger.eventType%2CeventTrigger.resource%2CeventTrigger.failurePolicy%2CminInstances%2CmaxInstances%2CingressSettings%2CenvironmentVariables%2CserviceAccountEmail%2CavailableMemoryMb%2Ctimeout%2CvpcConnector%2CvpcConnectorEgressSettings%2CsourceToken%2CbuildEnvironmentVariables
+[debug] [2024-04-22T08:21:57.185Z] >>> [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation {"name":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation","sourceUploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/67341b45-52e1-4675-8dc3-44b84d9226fb.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775916&Signature=UOtkayvZ%2BRam3HrByrcSUJkKYZ%2FMLs0IzD%2BkDbA51g6TJu6dPWgmdcX2%2B%2F6J4mWI6riw5R%2FbNuQn%2B4eWCdiuU5fgtJRXu4xfShkwBECtZxW3lDk63%2FdDHSzXgum%2Fv59fwbP7TVdOIFepD5vRrNn3xbS5S5eMBdZSv9fhDJISJgU3Kc%2Bg1WjDB98JnvyHCQBO6Wr6D%2FIRLM1l05dBb2nN%2FAo6R%2Fd%2FeMm5qTAenW2xTEPJbmHyW%2Bu9fNJo9KJyQ%2FXbmdwL0QSzoyj%2FnNEtTg6QzlK2sTtsYRZ0FgQn2bpKLPzkDgOhxT%2FiJ%2BOS8UsfSaQirv9z%2F2Dm8TfAiMIfj54PkA%3D%3D","entryPoint":"addCustomClaimsOnUserCreation","runtime":"nodejs18","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"7f701332fe7197bbbb40391782a531d06287e1cf"},"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/root-fort-412616"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"root-fort-412616","EVENTARC_CLOUD_EVENT_SOURCE":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null,"buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}}
+[debug] [2024-04-22T08:21:57.590Z] <<< [apiv2][status] PATCH https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation 403
+[debug] [2024-04-22T08:21:57.590Z] <<< [apiv2][body] PATCH https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[warn] ⚠  functions: failed to update function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation 
+[error] Failed to update function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:21:57.600Z] Total Function Deployment time: 410
+[debug] [2024-04-22T08:21:57.600Z] 1 Functions Deployed
+[debug] [2024-04-22T08:21:57.600Z] 1 Functions Errored
+[debug] [2024-04-22T08:21:57.600Z] 0 Function Deployments Aborted
+[debug] [2024-04-22T08:21:57.600Z] Average Function Deployment time: 409
+[info] 
+[info] Functions deploy had errors with the following functions:
+	addCustomClaimsOnUserCreation(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2024-04-22T08:21:57.660Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation [none]
+[debug] [2024-04-22T08:21:57.661Z] >>> [apiv2][query] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list [none]
+[debug] [2024-04-22T08:21:57.805Z] <<< [apiv2][status] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list 200
+[debug] [2024-04-22T08:21:57.805Z] <<< [apiv2][body] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"root-fort-412616/gcf/us-central1","tags":[]}
+[debug] [2024-04-22T08:21:57.806Z] Could not find image for function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:21:58.391Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation 403
+[debug] [2024-04-22T08:21:58.391Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #root-fort-412616 by visiting https://console.developers.google.com/billing/enable?project=root-fort-412616 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=root-fort-412616"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/root-fort-412616"}}]}}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/root-fort-412616/us-central1/gcf-artifacts 
+[debug] [2024-04-22T08:21:58.392Z] Functions deploy failed.
+[debug] [2024-04-22T08:21:58.392Z] {
+  "endpoint": {
+    "id": "addCustomClaimsOnUserCreation",
+    "project": "root-fort-412616",
+    "region": "us-central1",
+    "entryPoint": "addCustomClaimsOnUserCreation",
+    "platform": "gcfv1",
+    "runtime": "nodejs18",
+    "eventTrigger": {
+      "eventType": "providers/firebase.auth/eventTypes/user.create",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/root-fort-412616"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}",
+      "GCLOUD_PROJECT": "root-fort-412616",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "codebase": "default",
+    "securityLevel": "SECURE_ALWAYS",
+    "targetedByOnly": false,
+    "hash": "7f701332fe7197bbbb40391782a531d06287e1cf"
+  },
+  "op": "update",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "exit": 1,
+    "message": "Failed to update function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 403,
+            "message": "Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+            "status": "PERMISSION_DENIED"
+          }
+        },
+        "response": {
+          "statusCode": 403
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 403, Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+      "status": 403
+    },
+    "status": 403,
+    "code": 403
+  }
+}
+[debug] [2024-04-22T08:21:58.412Z] Error: Failed to update function addCustomClaimsOnUserCreation in region us-central1
+    at /opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:51:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.updateV1Function (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:349:32)
+    at async Fabricator.updateEndpoint (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:151:13)
+    at async handle (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2024-04-22T08:22:28.746Z] ----------------------------------------------------------------------
+[debug] [2024-04-22T08:22:28.747Z] Command:       /opt/homebrew/Cellar/node/21.7.3/bin/node /opt/homebrew/bin/firebase deploy --only functions
+[debug] [2024-04-22T08:22:28.747Z] CLI Version:   13.7.3
+[debug] [2024-04-22T08:22:28.748Z] Platform:      darwin
+[debug] [2024-04-22T08:22:28.748Z] Node Version:  v21.7.3
+[debug] [2024-04-22T08:22:28.748Z] Time:          Mon Apr 22 2024 10:22:28 GMT+0200 (Central European Summer Time)
+[debug] [2024-04-22T08:22:28.748Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-22T08:22:28.782Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-22T08:22:28.782Z] > authorizing via signed-in user (rosen200262@gmail.com)
+[debug] [2024-04-22T08:22:28.782Z] [iam] checking project root-fort-412616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-04-22T08:22:28.783Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions [none]
+[debug] [2024-04-22T08:22:28.783Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:28.783Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:22:28.971Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions 200
+[debug] [2024-04-22T08:22:28.971Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:22:28.972Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-04-22T08:22:28.972Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-04-22T08:22:29.159Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-04-22T08:22:29.160Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'root-fort-412616'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-04-22T08:22:29.164Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:22:29.430Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:22:29.430Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-04-22T08:22:29.433Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-04-22T08:22:29.433Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:29.435Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-04-22T08:22:29.435Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:29.436Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [none]
+[debug] [2024-04-22T08:22:29.437Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:29.438Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [none]
+[debug] [2024-04-22T08:22:29.439Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:30.359Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com 200
+[debug] [2024-04-22T08:22:30.359Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:30.365Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com 200
+[debug] [2024-04-22T08:22:30.365Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:30.365Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com 200
+[debug] [2024-04-22T08:22:30.365Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:30.387Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com 200
+[debug] [2024-04-22T08:22:30.387Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-04-22T08:22:30.388Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig [none]
+[debug] [2024-04-22T08:22:30.667Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig 200
+[debug] [2024-04-22T08:22:30.668Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig {"projectId":"root-fort-412616","storageBucket":"root-fort-412616.appspot.com","locationId":"europe-west2"}
+[debug] [2024-04-22T08:22:30.669Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs [none]
+[debug] [2024-04-22T08:22:31.385Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs 200
+[debug] [2024-04-22T08:22:31.386Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs {}
+[debug] [2024-04-22T08:22:31.388Z] Validating nodejs source
+[debug] [2024-04-22T08:22:31.778Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-04-22T08:22:31.778Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-04-22T08:22:31.778Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-04-22T08:22:31.782Z] Found firebase-functions binary at '/Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8995
+
+[debug] [2024-04-22T08:22:32.033Z] Got response from /__/functions.yaml {"endpoints":{"addCustomClaimsOnUserCreation":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","eventFilters":{"resource":"projects/root-fort-412616"},"retry":false},"labels":{},"entryPoint":"addCustomClaimsOnUserCreation"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions (68.44 KB) for uploading 
+[debug] [2024-04-22T08:22:37.085Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions [none]
+[debug] [2024-04-22T08:22:37.807Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:22:37.808Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions {}
+[debug] [2024-04-22T08:22:37.810Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-04-22T08:22:38.389Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:22:38.389Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions {}
+[debug] [2024-04-22T08:22:38.394Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:22:38.684Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:22:38.684Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[debug] [2024-04-22T08:22:38.688Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2024-04-22T08:22:38.688Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2024-04-22T08:22:39.259Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2024-04-22T08:22:39.260Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775959&Signature=GcoNFHjL6miKPOAAAJKWUdXSnBjZGdEoSgf5FdDhGuAK41OnofgA1cPb%2BqYSgmz%2B7hlAhwcrcqH90Hwnf03Q2zr4xGSVyyGgh0Mo2hJkJ5J6v7jk9VUG3zOxpDU18qPiLp%2FDugbbeRNOlhIUne8sZkDPmXkzeZpb2UImTNiGMj%2BKINcl0bZ0cQjJI0PKl3%2BZwQNbLBJeekD0j9YY4qI9H4%2FFDWc8Rdl1gl07r5n1MKzRyDdSTV%2FaTYGemugwkp%2BHFz3QujyE6x3SNcZLalOqwMuO7s9SvH2lNhRR5FsNZdoFin6G2sZfIS7cF3jECK%2BUjybtzgLrWh2L1RiMJhT5Dg%3D%3D"}
+[debug] [2024-04-22T08:22:39.263Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip GoogleAccessId=service-647460229344%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775959&Signature=GcoNFHjL6miKPOAAAJKWUdXSnBjZGdEoSgf5FdDhGuAK41OnofgA1cPb%2BqYSgmz%2B7hlAhwcrcqH90Hwnf03Q2zr4xGSVyyGgh0Mo2hJkJ5J6v7jk9VUG3zOxpDU18qPiLp%2FDugbbeRNOlhIUne8sZkDPmXkzeZpb2UImTNiGMj%2BKINcl0bZ0cQjJI0PKl3%2BZwQNbLBJeekD0j9YY4qI9H4%2FFDWc8Rdl1gl07r5n1MKzRyDdSTV%2FaTYGemugwkp%2BHFz3QujyE6x3SNcZLalOqwMuO7s9SvH2lNhRR5FsNZdoFin6G2sZfIS7cF3jECK%2BUjybtzgLrWh2L1RiMJhT5Dg%3D%3D
+[debug] [2024-04-22T08:22:39.263Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip [stream]
+[debug] [2024-04-22T08:22:39.789Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip 200
+[debug] [2024-04-22T08:22:39.790Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 18 (1st Gen) function addCustomClaimsOnUserCreation(us-central1)... 
+[debug] [2024-04-22T08:22:39.796Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions [none]
+[debug] [2024-04-22T08:22:39.796Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions {"name":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation","sourceUploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/6663cd76-b4d7-4449-87a0-ed7a596d0e6c.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775959&Signature=GcoNFHjL6miKPOAAAJKWUdXSnBjZGdEoSgf5FdDhGuAK41OnofgA1cPb%2BqYSgmz%2B7hlAhwcrcqH90Hwnf03Q2zr4xGSVyyGgh0Mo2hJkJ5J6v7jk9VUG3zOxpDU18qPiLp%2FDugbbeRNOlhIUne8sZkDPmXkzeZpb2UImTNiGMj%2BKINcl0bZ0cQjJI0PKl3%2BZwQNbLBJeekD0j9YY4qI9H4%2FFDWc8Rdl1gl07r5n1MKzRyDdSTV%2FaTYGemugwkp%2BHFz3QujyE6x3SNcZLalOqwMuO7s9SvH2lNhRR5FsNZdoFin6G2sZfIS7cF3jECK%2BUjybtzgLrWh2L1RiMJhT5Dg%3D%3D","entryPoint":"addCustomClaimsOnUserCreation","runtime":"nodejs18","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"7f701332fe7197bbbb40391782a531d06287e1cf"},"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/root-fort-412616"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"root-fort-412616","EVENTARC_CLOUD_EVENT_SOURCE":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null,"buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}}
+[debug] [2024-04-22T08:22:40.066Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions 403
+[debug] [2024-04-22T08:22:40.066Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[warn] ⚠  functions: failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation 
+[error] Failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:22:40.075Z] Total Function Deployment time: 275
+[debug] [2024-04-22T08:22:40.075Z] 1 Functions Deployed
+[debug] [2024-04-22T08:22:40.076Z] 1 Functions Errored
+[debug] [2024-04-22T08:22:40.076Z] 0 Function Deployments Aborted
+[debug] [2024-04-22T08:22:40.076Z] Average Function Deployment time: 274
+[info] 
+[info] Functions deploy had errors with the following functions:
+	addCustomClaimsOnUserCreation(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2024-04-22T08:22:40.129Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation [none]
+[debug] [2024-04-22T08:22:40.130Z] >>> [apiv2][query] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list [none]
+[debug] [2024-04-22T08:22:40.276Z] <<< [apiv2][status] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list 200
+[debug] [2024-04-22T08:22:40.277Z] <<< [apiv2][body] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"root-fort-412616/gcf/us-central1","tags":[]}
+[debug] [2024-04-22T08:22:40.277Z] Could not find image for function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:22:40.877Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation 403
+[debug] [2024-04-22T08:22:40.878Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #root-fort-412616 by visiting https://console.developers.google.com/billing/enable?project=root-fort-412616 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=root-fort-412616"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"consumer":"projects/root-fort-412616","service":"artifactregistry.googleapis.com"}}]}}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/root-fort-412616/us-central1/gcf-artifacts 
+[debug] [2024-04-22T08:22:40.879Z] Functions deploy failed.
+[debug] [2024-04-22T08:22:40.879Z] {
+  "endpoint": {
+    "id": "addCustomClaimsOnUserCreation",
+    "project": "root-fort-412616",
+    "region": "us-central1",
+    "entryPoint": "addCustomClaimsOnUserCreation",
+    "platform": "gcfv1",
+    "runtime": "nodejs18",
+    "eventTrigger": {
+      "eventType": "providers/firebase.auth/eventTypes/user.create",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/root-fort-412616"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}",
+      "GCLOUD_PROJECT": "root-fort-412616",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "7f701332fe7197bbbb40391782a531d06287e1cf"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 403,
+            "message": "Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+            "status": "PERMISSION_DENIED"
+          }
+        },
+        "response": {
+          "statusCode": 403
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 403, Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+      "status": 403
+    },
+    "status": 403,
+    "code": 403
+  }
+}
+[debug] [2024-04-22T08:22:40.907Z] Error: Failed to create function addCustomClaimsOnUserCreation in region us-central1
+    at /opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:51:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:181:32)
+    at async Fabricator.createEndpoint (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:133:13)
+    at async handle (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions
+[debug] [2024-04-22T08:22:56.851Z] ----------------------------------------------------------------------
+[debug] [2024-04-22T08:22:56.855Z] Command:       /opt/homebrew/Cellar/node/21.7.3/bin/node /opt/homebrew/bin/firebase deploy --only functions
+[debug] [2024-04-22T08:22:56.855Z] CLI Version:   13.7.3
+[debug] [2024-04-22T08:22:56.855Z] Platform:      darwin
+[debug] [2024-04-22T08:22:56.855Z] Node Version:  v21.7.3
+[debug] [2024-04-22T08:22:56.855Z] Time:          Mon Apr 22 2024 10:22:56 GMT+0200 (Central European Summer Time)
+[debug] [2024-04-22T08:22:56.856Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-04-22T08:22:56.888Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-04-22T08:22:56.888Z] > authorizing via signed-in user (rosen200262@gmail.com)
+[debug] [2024-04-22T08:22:56.888Z] [iam] checking project root-fort-412616 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-04-22T08:22:56.889Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions [none]
+[debug] [2024-04-22T08:22:56.889Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:56.889Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:22:57.181Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions 200
+[debug] [2024-04-22T08:22:57.181Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/root-fort-412616:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-04-22T08:22:57.182Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-04-22T08:22:57.182Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2024-04-22T08:22:57.369Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2024-04-22T08:22:57.370Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/root-fort-412616/serviceAccounts/root-fort-412616@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'root-fort-412616'...
+[info] 
+[info] i  deploying functions 
+[debug] [2024-04-22T08:22:57.374Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:22:57.828Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:22:57.828Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2024-04-22T08:22:57.831Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [none]
+[debug] [2024-04-22T08:22:57.831Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:57.833Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [none]
+[debug] [2024-04-22T08:22:57.833Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:57.834Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [none]
+[debug] [2024-04-22T08:22:57.834Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:57.836Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [none]
+[debug] [2024-04-22T08:22:57.836Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com x-goog-quota-user=projects/root-fort-412616
+[debug] [2024-04-22T08:22:58.831Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com 200
+[debug] [2024-04-22T08:22:58.831Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:58.833Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com 200
+[debug] [2024-04-22T08:22:58.833Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:58.834Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com 200
+[debug] [2024-04-22T08:22:58.834Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2024-04-22T08:22:58.834Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com 200
+[debug] [2024-04-22T08:22:58.834Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/root-fort-412616/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2024-04-22T08:22:58.835Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig [none]
+[debug] [2024-04-22T08:22:59.116Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig 200
+[debug] [2024-04-22T08:22:59.117Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616/adminSdkConfig {"projectId":"root-fort-412616","storageBucket":"root-fort-412616.appspot.com","locationId":"europe-west2"}
+[debug] [2024-04-22T08:22:59.118Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs [none]
+[debug] [2024-04-22T08:22:59.320Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs 200
+[debug] [2024-04-22T08:22:59.320Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/root-fort-412616/configs {}
+[debug] [2024-04-22T08:22:59.323Z] Validating nodejs source
+[debug] [2024-04-22T08:22:59.778Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-04-22T08:22:59.778Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2024-04-22T08:22:59.779Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-04-22T08:22:59.783Z] Found firebase-functions binary at '/Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8325
+
+[debug] [2024-04-22T08:23:00.107Z] Got response from /__/functions.yaml {"endpoints":{"addCustomClaimsOnUserCreation":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","eventFilters":{"resource":"projects/root-fort-412616"},"retry":false},"labels":{},"entryPoint":"addCustomClaimsOnUserCreation"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /Users/rosenstanchev/Desktop/Fontys/S6/Individual Project/GitHub/foodmotion-frontend/frontend/functions (68.44 KB) for uploading 
+[debug] [2024-04-22T08:23:05.150Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions [none]
+[debug] [2024-04-22T08:23:05.682Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:23:05.683Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/-/functions {}
+[debug] [2024-04-22T08:23:05.683Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2024-04-22T08:23:06.305Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions 200
+[debug] [2024-04-22T08:23:06.305Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/root-fort-412616/locations/-/functions {}
+[debug] [2024-04-22T08:23:06.311Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 [none]
+[debug] [2024-04-22T08:23:06.922Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 200
+[debug] [2024-04-22T08:23:06.923Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/root-fort-412616 {"projectId":"root-fort-412616","projectNumber":"647460229344","displayName":"My First Project","name":"projects/root-fort-412616","resources":{"hostingSite":"root-fort-412616","locationId":"europe-west2"},"state":"ACTIVE","etag":"1_d4ea2ff7-b667-409a-a251-7e2c36ecd82f"}
+[debug] [2024-04-22T08:23:06.925Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl [none]
+[debug] [2024-04-22T08:23:06.925Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {}
+[debug] [2024-04-22T08:23:07.473Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl 200
+[debug] [2024-04-22T08:23:07.473Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775987&Signature=jsgQdcfh%2BS4fsenBQfyBdRlHzwKnIXwNLYigb8yyHLlMmwzV%2FV7I7nXJd6N%2BFo1I7aMKiAEu8uugIJn7oOEBH7%2Fldwb9S93kqiorMXVXLrnjvGb5D%2BioUiiCJrlNbf6FLj3w3ibA912b393fYe5%2F%2FmjwVQwHk1AusdMt8YyL3WmLBd7YSYHTSKAzV0ShrN3a4Q6%2B%2B9trv5xUWsl6%2FNlF6E1vdBVgkyHmAFGQg14gIGJ721lsTvvNOZf86idH5N3Z%2BZY%2F5U3CZDpQTMcFIIDR6t6LbpGc%2FSW90LV74dTd7TtjTChYUFHSPiTf1PLF%2FdmeDHrkVXwF8miKBj9GaRUBcw%3D%3D"}
+[debug] [2024-04-22T08:23:07.477Z] >>> [apiv2][query] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip GoogleAccessId=service-647460229344%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775987&Signature=jsgQdcfh%2BS4fsenBQfyBdRlHzwKnIXwNLYigb8yyHLlMmwzV%2FV7I7nXJd6N%2BFo1I7aMKiAEu8uugIJn7oOEBH7%2Fldwb9S93kqiorMXVXLrnjvGb5D%2BioUiiCJrlNbf6FLj3w3ibA912b393fYe5%2F%2FmjwVQwHk1AusdMt8YyL3WmLBd7YSYHTSKAzV0ShrN3a4Q6%2B%2B9trv5xUWsl6%2FNlF6E1vdBVgkyHmAFGQg14gIGJ721lsTvvNOZf86idH5N3Z%2BZY%2F5U3CZDpQTMcFIIDR6t6LbpGc%2FSW90LV74dTd7TtjTChYUFHSPiTf1PLF%2FdmeDHrkVXwF8miKBj9GaRUBcw%3D%3D
+[debug] [2024-04-22T08:23:07.477Z] >>> [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip [stream]
+[debug] [2024-04-22T08:23:08.123Z] <<< [apiv2][status] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip 200
+[debug] [2024-04-22T08:23:08.123Z] <<< [apiv2][body] PUT https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 18 (1st Gen) function addCustomClaimsOnUserCreation(us-central1)... 
+[debug] [2024-04-22T08:23:08.129Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions [none]
+[debug] [2024-04-22T08:23:08.129Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions {"name":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation","sourceUploadUrl":"https://storage.googleapis.com/uploads-2274661864.us-central1.cloudfunctions.appspot.com/5b14a62b-926d-45d1-aed0-c07c8499d339.zip?GoogleAccessId=service-647460229344@gcf-admin-robot.iam.gserviceaccount.com&Expires=1713775987&Signature=jsgQdcfh%2BS4fsenBQfyBdRlHzwKnIXwNLYigb8yyHLlMmwzV%2FV7I7nXJd6N%2BFo1I7aMKiAEu8uugIJn7oOEBH7%2Fldwb9S93kqiorMXVXLrnjvGb5D%2BioUiiCJrlNbf6FLj3w3ibA912b393fYe5%2F%2FmjwVQwHk1AusdMt8YyL3WmLBd7YSYHTSKAzV0ShrN3a4Q6%2B%2B9trv5xUWsl6%2FNlF6E1vdBVgkyHmAFGQg14gIGJ721lsTvvNOZf86idH5N3Z%2BZY%2F5U3CZDpQTMcFIIDR6t6LbpGc%2FSW90LV74dTd7TtjTChYUFHSPiTf1PLF%2FdmeDHrkVXwF8miKBj9GaRUBcw%3D%3D","entryPoint":"addCustomClaimsOnUserCreation","runtime":"nodejs18","dockerRegistry":"ARTIFACT_REGISTRY","labels":{"deployment-tool":"cli-firebase","firebase-functions-hash":"01ae7dbed26275c8097ec55321ba136705ac6c50"},"eventTrigger":{"eventType":"providers/firebase.auth/eventTypes/user.create","resource":"projects/root-fort-412616"},"minInstances":null,"maxInstances":null,"ingressSettings":null,"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}","GCLOUD_PROJECT":"root-fort-412616","EVENTARC_CLOUD_EVENT_SOURCE":"projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"},"serviceAccountEmail":null,"availableMemoryMb":null,"timeout":null,"vpcConnector":null,"vpcConnectorEgressSettings":null,"buildEnvironmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}}
+[debug] [2024-04-22T08:23:08.662Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions 403
+[debug] [2024-04-22T08:23:08.663Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v1/projects/root-fort-412616/locations/us-central1/functions {"error":{"code":403,"message":"Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.","status":"PERMISSION_DENIED"}}
+[warn] ⚠  functions: failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation 
+[error] Failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:23:08.672Z] Total Function Deployment time: 539
+[debug] [2024-04-22T08:23:08.672Z] 1 Functions Deployed
+[debug] [2024-04-22T08:23:08.672Z] 1 Functions Errored
+[debug] [2024-04-22T08:23:08.672Z] 0 Function Deployments Aborted
+[debug] [2024-04-22T08:23:08.672Z] Average Function Deployment time: 538
+[info] 
+[info] Functions deploy had errors with the following functions:
+	addCustomClaimsOnUserCreation(us-central1)
+[info] i  functions: cleaning up build files... 
+[debug] [2024-04-22T08:23:08.756Z] >>> [apiv2][query] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation [none]
+[debug] [2024-04-22T08:23:08.757Z] >>> [apiv2][query] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list [none]
+[debug] [2024-04-22T08:23:08.916Z] <<< [apiv2][status] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list 200
+[debug] [2024-04-22T08:23:08.916Z] <<< [apiv2][body] GET https://us.gcr.io/v2/root-fort-412616/gcf/us-central1/tags/list {"child":[],"manifest":{},"name":"root-fort-412616/gcf/us-central1","tags":[]}
+[debug] [2024-04-22T08:23:08.917Z] Could not find image for function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation
+[debug] [2024-04-22T08:23:09.508Z] <<< [apiv2][status] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation 403
+[debug] [2024-04-22T08:23:09.508Z] <<< [apiv2][body] DELETE https://artifactregistry.googleapis.com/v1beta2/projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts/packages/add_custom_claims_on_user_creation {"error":{"code":403,"message":"This API method requires billing to be enabled. Please enable billing on project #root-fort-412616 by visiting https://console.developers.google.com/billing/enable?project=root-fort-412616 then retry. If you enabled billing for this project recently, wait a few minutes for the action to propagate to our systems and retry.","status":"PERMISSION_DENIED","details":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Google developers console billing","url":"https://console.developers.google.com/billing/enable?project=root-fort-412616"}]},{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"BILLING_DISABLED","domain":"googleapis.com","metadata":{"service":"artifactregistry.googleapis.com","consumer":"projects/root-fort-412616"}}]}}
+[warn] ⚠  functions: Unhandled error cleaning up build images. This could result in a small monthly bill if not corrected. You can attempt to delete these images by redeploying or you can delete them manually at https://console.cloud.google.com/artifacts/docker/root-fort-412616/us-central1/gcf-artifacts 
+[debug] [2024-04-22T08:23:09.509Z] Functions deploy failed.
+[debug] [2024-04-22T08:23:09.509Z] {
+  "endpoint": {
+    "id": "addCustomClaimsOnUserCreation",
+    "project": "root-fort-412616",
+    "region": "us-central1",
+    "entryPoint": "addCustomClaimsOnUserCreation",
+    "platform": "gcfv1",
+    "runtime": "nodejs18",
+    "eventTrigger": {
+      "eventType": "providers/firebase.auth/eventTypes/user.create",
+      "retry": false,
+      "eventFilters": {
+        "resource": "projects/root-fort-412616"
+      }
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase"
+    },
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "serviceAccount": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"root-fort-412616\",\"storageBucket\":\"root-fort-412616.appspot.com\",\"locationId\":\"europe-west2\"}",
+      "GCLOUD_PROJECT": "root-fort-412616",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "codebase": "default",
+    "targetedByOnly": false,
+    "hash": "01ae7dbed26275c8097ec55321ba136705ac6c50"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/root-fort-412616/locations/us-central1/functions/addCustomClaimsOnUserCreation",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 403,
+            "message": "Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+            "status": "PERMISSION_DENIED"
+          }
+        },
+        "response": {
+          "statusCode": 403
+        }
+      },
+      "exit": 1,
+      "message": "HTTP Error: 403, Unable to retrieve the repository metadata for projects/root-fort-412616/locations/us-central1/repositories/gcf-artifacts. Ensure that the Cloud Functions service account has 'artifactregistry.repositories.list' and 'artifactregistry.repositories.get' permissions. You can add the permissions by granting the role 'roles/artifactregistry.reader'.",
+      "status": 403
+    },
+    "status": 403,
+    "code": 403
+  }
+}
+[debug] [2024-04-22T08:23:09.525Z] Error: Failed to create function addCustomClaimsOnUserCreation in region us-central1
+    at /opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:51:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV1Function (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:181:32)
+    at async Fabricator.createEndpoint (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:133:13)
+    at async handle (/opt/homebrew/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:88:17)
+[error] 
+[error] Error: There was an error deploying functions

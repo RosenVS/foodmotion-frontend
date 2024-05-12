@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1vw;
+  padding: 1vw;
+}
+
+.left-panel {
+  margin-top: 3vw;
+  width: 30%;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.left-panel h2 {
+  margin-bottom: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .MuiPaginationItem-root {
+  color: #8C1CEC;
+}
+
+.pagination .Mui-selected {
+  background-color: #8C1CEC;
+  color: #fff;
+}
+
+.left-panel .search-bar {
+  margin-bottom: 20px;
+}
+
+.left-panel div {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-panel {
+  width: 70%;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+}
+
+.product-card h3 {
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  margin: 5px 0;
+}
+
+/* Add new styles */
+.nutrition-info,
+.fat-info {
+  margin-top: 10px;
+}
+
+.nutrition-info p,
+.fat-info p {
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+ 
+  .left-panel {
+    width: 100%;
+    margin-right: 0;
+  }
+  .right-panel {
+    text-align: -webkit-center;
+    width: 100%;
+  }
+}
