@@ -31,62 +31,27 @@ jobs:
 
       # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
 
+      # - name: Build Image, Push to Registry, Deploy to Cloud Run
+      #   run: |
+      #     export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
+      #     echo "${KEY_FILE}" > client-secret.json
+      #     gcloud auth activate-service-account individual-account@${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+      #     gcloud config set project ${{env.PROJECT_ID}}
+      #     gcloud auth configure-docker europe-west1-docker.pkg.dev
+      #     export DOCKER_BUILDKIT=0
+      #     docker build -t $IMAGE_NAME .
+      #     docker push $IMAGE_NAME
+      #     gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=2 --memory=8Gi --timeout=3000 --allow-unauthenticated || true
+
+
       - name: Build Image, Push to Registry, Deploy to Cloud Run
         run: |
           export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
           echo "${KEY_FILE}" > client-secret.json
-          gcloud auth activate-service-account individual-account@${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+          gcloud auth activate-service-account individual-account@inbound-pattern-422518-k7.iam.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
           gcloud config set project ${{env.PROJECT_ID}}
           gcloud auth configure-docker europe-west1-docker.pkg.dev
           export DOCKER_BUILDKIT=0
           docker build -t $IMAGE_NAME .
           docker push $IMAGE_NAME
           gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=2 --memory=8Gi --timeout=3000 --allow-unauthenticated || true
-
-
-
-
-# name: Build and Deploy to Cloud Run
-
-# on:
-#   push:
-#     branches: [ "main" ]
-
-# env:
-#   PROJECT_ID: YOUR_PROJECT_ID # TODO: update Google Cloud project id
-#   GAR_LOCATION: YOUR_GAR_LOCATION # TODO: update Artifact Registry location
-#   SERVICE: YOUR_SERVICE_NAME # TODO: update Cloud Run service name
-#   REGION: YOUR_SERVICE_REGION # TODO: update Cloud Run service region
-
-# jobs:
-#   deploy:
-#     # Add 'id-token' with the intended permissions for workload identity federation
-#     permissions:
-#       contents: 'read'
-#       id-token: 'write'
-
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#       # NOTE: Alternative option - authentication via credentials json
-#       # - name: Google Auth
-#       #   id: auth
-#       #   uses: 'google-github-actions/auth@v0'
-#       #   with:
-#       #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}''
-
-#       # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
-
-#       - name: Build Image, Push to Registry, Deploy to Cloud Run
-#         run: |
-#           export IMAGE_NAME=europe-west1-docker.pkg.dev/root-fort-412616/individual-project-frontend/individual-frontend:$GITHUB_SHA
-#           export SERVICE_NAME=individual-project-frontend
-#           echo "${KEY_FILE}" > client-secret.json
-#           gcloud auth activate-service-account root-fort-412616@appspot.gserviceaccount.com --key-file root-fort-412616-3f48ad93aa23.json
-#           gcloud config set project root-fort-412616
-#           gcloud auth configure-docker europe-west1-docker.pkg.dev
-#           export DOCKER_BUILDKIT=0
-#           docker build -t $IMAGE_NAME .
-#           docker push $IMAGE_NAME
-#           gcloud run deploy $SERVICE_NAME --image $IMAGE_NAME --port 8080 --region europe-west1 --cpu=2 --memory=8Gi --timeout=3000 --allow-unauthenticated || true
