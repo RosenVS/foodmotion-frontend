@@ -1,64 +1,5 @@
 name: Build and Deploy to Cloud Run
 
-# on:
-#   push:
-#     branches: [ "main" ]
-
-# env:
-#   PROJECT_ID: inbound-pattern-422518-k7 # TODO: update Google Cloud project id
-#   APP_NAME: foodmotion-frontend # TODO: update Artifact Registry location
-#   SER_NAME: foodmotion-frontend # TODO: update Artifact Registry location
-#   REGION: europe-west1 # TODO: update Cloud Run service region
-#   SER_PORT: 8081 # TODO: update Cloud Run service region
-
-# jobs:
-#   deploy:
-#     # Add 'id-token' with the intended permissions for workload identity federation
-#     permissions:
-#       contents: 'read'
-#       id-token: 'write'
-
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#       # NOTE: Alternative option - authentication via credentials json
-#       # - name: Google Auth
-#       #   id: auth
-#       #   uses: 'google-github-actions/auth@v0'
-#       #   with:
-#       #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}''
-
-#       # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
-
-#       # - name: Build Image, Push to Registry, Deploy to Cloud Run
-#       #   run: |
-#       #     export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
-#       #     echo "${KEY_FILE}" > client-secret.json
-#       #     gcloud auth activate-service-account individual-account@${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
-#       #     gcloud config set project ${{env.PROJECT_ID}}
-#       #     gcloud auth configure-docker europe-west1-docker.pkg.dev
-#       #     export DOCKER_BUILDKIT=0
-#       #     docker build -t $IMAGE_NAME .
-#       #     docker push $IMAGE_NAME
-#       #     gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=2 --memory=8Gi --timeout=3000 --allow-unauthenticated || true
-
-
-#       - name: Build Image, Push to Registry, Deploy to Cloud Run
-#         run: |
-#           export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
-#           echo "${KEY_FILE}" > client-secret.json
-#           gcloud auth activate-service-account individual-account@inbound-pattern-422518-k7.iam.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
-#           gcloud config set project ${{env.PROJECT_ID}}
-#           gcloud auth configure-docker europe-west1-docker.pkg.dev
-#           export DOCKER_BUILDKIT=0
-#           docker build -t $IMAGE_NAME .
-#           docker push $IMAGE_NAME
-#           gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
-
-
-
-
 on:
   push:
     branches: [ "main" ]
@@ -71,40 +12,61 @@ env:
   SER_PORT: 8081 # TODO: update Cloud Run service region
 
 jobs:
-  checkout:
+  deploy:
+    # Add 'id-token' with the intended permissions for workload identity federation
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      # NOTE: Alternative option - authentication via credentials json
+      # - name: Google Auth
+      #   id: auth
+      #   uses: 'google-github-actions/auth@v0'
+      #   with:
+      #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}''
 
-  build_docker_image:
-    runs-on: ubuntu-latest
-    needs: checkout
-    steps:
-      - name: Build Docker Image
+      # BEGIN - Docker auth and build (NOTE: If you already have a container image, these Docker steps can be omitted)
+
+      # - name: Build Image, Push to Registry, Deploy to Cloud Run
+      #   run: |
+      #     export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
+      #     echo "${KEY_FILE}" > client-secret.json
+      #     gcloud auth activate-service-account individual-account@${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+      #     gcloud config set project ${{env.PROJECT_ID}}
+      #     gcloud auth configure-docker europe-west1-docker.pkg.dev
+      #     export DOCKER_BUILDKIT=0
+      #     docker build -t $IMAGE_NAME .
+      #     docker push $IMAGE_NAME
+      #     gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=2 --memory=8Gi --timeout=3000 --allow-unauthenticated || true
+
+
+      # - name: Build Image, Push to Registry, Deploy to Cloud Run
+      #   run: |
+      #     export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
+      #     echo "${KEY_FILE}" > client-secret.json
+      #     gcloud auth activate-service-account individual-account@inbound-pattern-422518-k7.iam.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+      #     gcloud config set project ${{env.PROJECT_ID}}
+      #     gcloud auth configure-docker europe-west1-docker.pkg.dev
+      #     export DOCKER_BUILDKIT=0
+      #     docker build -t $IMAGE_NAME .
+      #     docker push $IMAGE_NAME
+      #     gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
+
+
+      - name: Build Image, Push to Registry, Deploy to Cloud Run
         run: |
           export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
-          echo "${KEY_FILE}" > client-secret.json
-          gcloud auth activate-service-account individual-account@inbound-pattern-422518-k7.iam.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+          echo "${{ secrets.KEY_FILE }}" > client-secret.json
+          gcloud auth activate-service-account individual-account@inbound-pattern-422518-k7.iam.gserviceaccount.com --key-file client-secret.json
           gcloud config set project ${{env.PROJECT_ID}}
           gcloud auth configure-docker europe-west1-docker.pkg.dev
           export DOCKER_BUILDKIT=0
           docker build -t $IMAGE_NAME .
-      
-  push_to_registry:
-    runs-on: ubuntu-latest
-    needs: build_docker_image
-    steps:
-      - name: Push to Registry
-        run: |
-          export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
           docker push $IMAGE_NAME
-
-  deploy_to_cloud_run:
-    runs-on: ubuntu-latest
-    needs: push_to_registry
-    steps:
-      - name: Deploy to Cloud Run
-        run: |
-          export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
           gcloud run deploy ${{env.SER_NAME}} --image $IMAGE_NAME --port ${{env.SER_PORT}} --region ${{env.REGION}} --cpu=1 --memory=1Gi --timeout=3000 --allow-unauthenticated || true
+        env:
+          KEY_FILE: ${{ secrets.KEY_FILE }}
