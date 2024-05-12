@@ -35,7 +35,7 @@ jobs:
         run: |
           export IMAGE_NAME=europe-west1-docker.pkg.dev/${{env.PROJECT_ID}}/${{env.APP_NAME}}/${{env.SER_NAME}}:$GITHUB_SHA
           echo "${KEY_FILE}" > client-secret.json
-          gcloud auth activate-service-account ${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
+          gcloud auth activate-service-account individual-account@${{env.PROJECT_ID}}@appspot.gserviceaccount.com --key-file ${{env.PROJECT_ID}}.json
           gcloud config set project ${{env.PROJECT_ID}}
           gcloud auth configure-docker europe-west1-docker.pkg.dev
           export DOCKER_BUILDKIT=0
