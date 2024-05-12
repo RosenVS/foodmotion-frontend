@@ -158,7 +158,7 @@ const getAccessToken = () => {
 export const testConnection = async() => {
   return axios({
     method: 'GET',
-    url: 'http://localhost:8080/api/food-product/test',
+    url: 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product/test',
     withCredentials: false,
     headers: {
       'Content-Type': 'application/json',
@@ -170,7 +170,7 @@ export const testConnection = async() => {
 export const fetchFoodProducts = () => {
   return axios({
     method: 'GET',
-    url: 'http://localhost:8080/api/food-product',
+    url: 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product',
     withCredentials: false,
     // headers: {
     //   'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ export const fetchFoodProducts = () => {
 export const deleteFoodProduct = (id) => {
   return axios({
     method: 'DELETE',
-    url: `http://localhost:8080/api/food-product/${id}`,
+    url: `https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product/${id}`,
     withCredentials: false,
     headers: {
       'Authorization': `Bearer ${getAccessToken()}`
@@ -193,7 +193,7 @@ export const deleteFoodProduct = (id) => {
 export const updateFoodProduct = (updatedProduct) => {
   return axios({
     method: 'PUT',
-    url: `http://localhost:8080/api/food-product/${updatedProduct.id}`,
+    url: `https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product/${updatedProduct.id}`,
     withCredentials: false,
     data: updatedProduct,
     headers: {
@@ -206,7 +206,7 @@ export const updateFoodProduct = (updatedProduct) => {
 export const createFoodProduct = (newProduct) => {
   return axios({
     method: 'POST',
-    url: `http://localhost:8080/api/food-product`,
+    url: `https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product`,
     withCredentials: false,
     data: newProduct,
     headers: {

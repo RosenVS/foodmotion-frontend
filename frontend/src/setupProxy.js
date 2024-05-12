@@ -4,7 +4,8 @@ module.exports = function(app) {
     app.use(
         '/api/food-product',
         createProxyMiddleware({
-          target: 'http://localhost:8080',
+          // target: 'http://localhost:8080',
+          target: 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app',
           changeOrigin: true,
         })
       );
