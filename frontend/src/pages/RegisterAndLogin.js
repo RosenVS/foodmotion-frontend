@@ -38,8 +38,10 @@ function RegisterAndLogin() {
       } else {
         await signUp(email, password);
       }
-
-      //window.location.reload();
+      if (localStorage.getItem("accessToken")) {
+        window.location.reload();
+      }
+      
       //history.goBack();
       history("/");
     
@@ -138,13 +140,17 @@ function RegisterAndLogin() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                control={<Checkbox value={false} color="primary"  />} // GDPR Checkbox
+                label="I agree to GDPR compliance"
               />
+               <Button variant="outlined" color="primary">
+                    View Terms and Conditions
+                  </Button>
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
+                id="actionButton"
                 sx={{ mt: 3, mb: 2 }}
               >
                 {isSignIn ? 'Sign In' : 'Sign Up'}

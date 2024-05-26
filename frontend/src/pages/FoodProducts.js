@@ -53,8 +53,8 @@ const columns = [
     width: 200,
     renderCell: (params) => (
       <strong>
-        <Button variant="contained" color="primary" onClick={() => openUpdate(params.row.id)}>Update</Button>
-        <Button variant="contained" color="error" onClick={() => openDelete(params.row.id)}>Delete</Button>
+        <Button variant="contained" color="primary" onClick={() => openUpdate(params.row.id)} className="selectProductUpdate">Update</Button>
+        <Button variant="contained" color="error" onClick={() => openDelete(params.row.id)} className="selectProductDelete">Delete</Button>
       </strong>
     )
   },
@@ -252,7 +252,7 @@ setLoading(false);
         </div>
       ) : (
         <div id='dataGrid'>
-    <Button variant="contained" color="primary" onClick={() => setOpenCreateForm(true)}>Create Food Product</Button> 
+    <Button variant="contained" color="primary" onClick={() => setOpenCreateForm(true)} id='btnCreateFoodProduct'>Create Food Product</Button> 
   <br />
   <br />
 
@@ -294,7 +294,7 @@ setLoading(false);
 
 
       <DialogActions>
-      <Button variant="contained" color="error" onClick={(e) => handleDelete(selectedProduct?.id)}>Delete</Button>
+      <Button variant="contained" color="error" onClick={(e) => handleDelete(selectedProduct?.id)} className="confirmDeletion">Delete</Button>
         <Button onClick={handleCancel} color="primary">Cancel</Button>
       </DialogActions>
     </Dialog>
@@ -332,7 +332,7 @@ setLoading(false);
 
 
       <DialogActions>
-      <Button variant="contained" color="error" onClick={(e) => handleUpdate(selectedProduct)}>Update</Button>
+      <Button variant="contained" color="error" onClick={(e) => handleUpdate(selectedProduct)} className="confirmUpdate">Update</Button>
         <Button onClick={handleCancel} color="primary">Cancel</Button>
       </DialogActions>
     </Dialog>
@@ -368,7 +368,7 @@ setLoading(false);
 
 
       <DialogActions>
-      <Button variant="contained" color="error" onClick={(e) => handleCreate(updatedProduct)}>Create</Button>
+      <Button variant="contained" color="error" onClick={(e) => handleCreate(updatedProduct)} id='confirmCreate'>Create</Button>
         <Button onClick={handleCancel} color="primary">Cancel</Button>
       </DialogActions>
     </Dialog>

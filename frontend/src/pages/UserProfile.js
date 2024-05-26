@@ -88,11 +88,14 @@ const MainPage = () => {
       console.log(dataToSend);
 
       await updateDietGoal(dataToSend);
-      
+      await new Promise(resolve => setTimeout(resolve, 500));
+
       
     } catch (error) {
       console.error('Error updating diet goal :', error);
     } finally {
+      const response = await fetchAccountData();
+      setFormData(response.data); 
       setOpen(false);
     }
   };
@@ -358,7 +361,9 @@ const MainPage = () => {
           <div>
             <Typography variant="h6">Diet Restrictions</Typography>
             <Typography>Diet Goal : {formData.dietGoal}</Typography>
-
+            <br/>
+            <Typography>Suggested Calorie Intake: {formData.calorieIntake} </Typography>
+            <Typography>With active level of {formData.activityLevel}</Typography>
 
             <Button onClick={handleClickOpen}>Edit</Button>
             <Dialog open={open} onClose={handleClose}>

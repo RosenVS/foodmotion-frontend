@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Checkbox, FormControlLabel, Dialog, DialogTitle, DialogContent, DialogActions, Button,TextField } from '@mui/material';
+import { Grid, Checkbox, FormControlLabel, Dialog, DialogTitle, DialogContent, DialogActions, Button,TextField, MenuItem } from '@mui/material';
 import { fetchFoodProducts } from '../api/FoodProductsAPI';
+import { createNewNutritionOfTheDay } from '../api/DailyNutritionAPI';
 import Pagination from '@mui/material/Pagination';
+import { useNavigate } from "react-router-dom";
 
 import CircularProgress from '@mui/material-next/CircularProgress';
 
@@ -10,6 +12,12 @@ import '../css/foodProductsdaily.css';
 const DataTable = () => {
   const [foodProducts, setFoodProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [newTimeOfTheDayForRecipe, setTimeOfTheDayForRecipe] = useState('');
+  const [openChangeStatusDialog, setOpenChangeStatusDialog] = useState(false);
+  const [servings, setServings] = useState(1);
+  const history = useNavigate();
+
   const [filter, setFilter] = useState({
     glutenFree: false,
     lactoseFree: false,
@@ -42,6 +50,15 @@ const DataTable = () => {
     fetchData();
   }, []);
 
+
+  const handleOpenChangeStatusDialog = async (recipe) => {
+    setSelectedRecipe(recipe);
+    setTimeOfTheDayForRecipe("BREAKFAST");
+    setOpenChangeStatusDialog(true);
+    
+   
+  };
+
   useEffect(() => {
     setCurrentPage(1); // Reset to first page when filters change
   }, [filter, searchTerm]);
@@ -52,6 +69,40 @@ const DataTable = () => {
 
   const handleSearchChange = event => {
     setSearchTerm(event.target.value);
+  };
+  const handleCloseChangeStatusDialog = () => {
+    setOpenChangeStatusDialog(false);
+  };
+  
+
+  const handleChangeStatus = async () => {
+    try {
+      const caloriesPerServing = {
+        carbs: (selectedRecipe.nutrition?.carbs?.totalCarbs * servings).toFixed(1),
+        fat: (selectedRecipe.nutrition?.fat?.totalFat * servings).toFixed(1),
+        protein: (selectedRecipe.nutrition?.fat?.totalProtein * servings).toFixed(1)
+      };
+  
+      const recipetoAdd = {
+        userId: localStorage.getItem("UserUID"),
+        recipeId: null,
+        date: null,
+        productId: selectedRecipe.id,
+        eatingTime: newTimeOfTheDayForRecipe,
+        totalCalories: Math.round(((selectedRecipe.nutrition?.carbs?.totalCarbs * 4) + (selectedRecipe.nutrition?.protein?.totalProtein * 4) + (selectedRecipe.nutrition?.fat?.totalFat * 9)) * servings),
+        totalCarbs: Math.round(selectedRecipe.nutrition?.carbs?.totalCarbs * servings),
+        totalFat: Math.round(selectedRecipe.nutrition?.fat?.totalFat * servings),
+        totalProtein: Math.round(selectedRecipe.nutrition?.protein?.totalProtein * servings),
+        serving: servings // Include servings in the recipe object
+    };
+  
+      console.log(recipetoAdd);
+      const response = await createNewNutritionOfTheDay(recipetoAdd);
+      history("/daily-nutrition");
+      setOpenChangeStatusDialog(false);
+    } catch (error) {
+      console.error('Error updating recipe status:', error);
+    }
   };
 
   const filteredProducts = foodProducts.filter(product => {
@@ -98,7 +149,7 @@ const DataTable = () => {
             <FormControlLabel
               key={key}
               control={<Checkbox checked={value} onChange={() => handleFilterChange(key)} />}
-              label={`${key} (${getRestrictionCount(key)})`} // Add count to label
+              label={`${key} (${getRestrictionCount(key)})`} 
             />
           ))}
         </div>
@@ -123,6 +174,8 @@ const DataTable = () => {
                     <div className="fat-info">
                       <p>Total Fat: {product.nutrition?.fat?.totalFat}</p>
                     </div>
+                    <Button onClick={() => handleOpenChangeStatusDialog(product)}>Add to Nutrition</Button>
+
                   </div>
                 </Grid>
               ))}
@@ -138,8 +191,92 @@ const DataTable = () => {
           </div>
         )}
       </div>
+      <Dialog open={openChangeStatusDialog} onClose={handleCloseChangeStatusDialog}>
+      {selectedRecipe && (
+        <DialogTitle>{selectedRecipe.title}</DialogTitle>
+      )}
+      <DialogContent>
+       
+        <p>Description: {selectedRecipe && selectedRecipe.name}</p>
+
+        {/* <p>Chef: {selectedRecipe && selectedRecipe.chef_id}</p> */}
+        <p>Cooking Time: {selectedRecipe && selectedRecipe.name}</p>
+        <TextField
+  label="Servings"
+  type="number"
+  value={servings}
+  onChange={e => setServings(e.target.value)}
+  fullWidth
+/>
+        {/* Nutrition Label */}
+        <div className="nutrition-label">
+          <p className="nutrition-label-heading">Nutrition Facts</p>
+          <hr />
+          <div className="nutrition-label-values">
+            <div>
+              <p>Amount per {servings} Serving</p>
+            </div>
+            <div>
+              <p>Calories {(((selectedRecipe && selectedRecipe.nutrition?.fat?.totalFat*9)+(selectedRecipe && selectedRecipe.nutrition?.protein?.totalProtein*4)+(selectedRecipe && selectedRecipe.nutrition?.carbs?.totalCarbs*4))*servings).toFixed(1)} per 100 grams</p>
+            </div>
+          </div>
+          <hr />
+          <div className="nutrition-label-values">
+            <div>
+              <p>Total Fat {((selectedRecipe && selectedRecipe.nutrition?.fat?.totalFat)*servings).toFixed(1)}g</p>
+            </div>
+            <div>
+              <p>% Daily Value*</p>
+            </div>
+          </div>
+          <hr />
+          <div className="nutrition-label-values">
+            <div>
+              <p>Carbohydrates {((selectedRecipe && selectedRecipe.nutrition?.carbs?.totalCarbs)*servings).toFixed(1)}g</p>
+            </div>
+            <div>
+              <p>% Daily Value*</p>
+            </div>
+          </div>
+          <hr />
+          <div className="nutrition-label-values">
+            <div>
+              <p>Protein {((selectedRecipe && selectedRecipe.nutrition?.protein?.totalProtein)*servings).toFixed(1)}g</p>
+            </div>
+            <div>
+              <p>% Daily Value*</p>
+            </div>
+          </div>
+          <hr />
+          <p className="nutrition-label-footer">*Percent Daily Values are based on a 2000 calorie diet.</p>
+        </div>
+        <br/>
+       
+
+        <TextField
+          select
+          label="Add to"
+          value={newTimeOfTheDayForRecipe}
+          onChange={e => setTimeOfTheDayForRecipe(e.target.value)}
+          fullWidth
+        >
+          {['BREAKFAST', 'LUNCH', 'DINNER'].map(status => (
+            <MenuItem key={status} value={status}>
+              {status}
+            </MenuItem>
+          ))}
+        </TextField>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleCloseChangeStatusDialog}>Cancel</Button>
+        <Button onClick={handleChangeStatus}>Add</Button>
+      </DialogActions>
+    </Dialog>
     </div>
   );
 };
 
 export default DataTable;
+
+
+
