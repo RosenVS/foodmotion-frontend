@@ -63,8 +63,8 @@ export const fetchAccountData = (id) => {
   return axios({
     method: 'GET',
     // url: `http://localhost:8082/api/account/${getUserUID()}`,
-    // url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/${getUserUID()}`,
-    url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev//api/account/${getUserUID()}`,
+    url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/${getUserUID()}`,
+    // url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev//api/account/${getUserUID()}`,
     withCredentials: false,
    
   });
@@ -74,8 +74,8 @@ export const fetchAccountData = (id) => {
 export const signUp = async (email, password) => {
     try {
       // const response = await axios.post('http://localhost:8081/api/firebase/signup', {
-      // const response = await axios.post('https://foodmotion-auth-service-hlfxsphkja-ew.a.run.app/api/firebase/signup', {
-      const response = await axios.post('https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/firebase/signup', {
+      const response = await axios.post('https://foodmotion-auth-service-hlfxsphkja-ew.a.run.app/api/firebase/signup', {
+      // const response = await axios.post('https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/firebase/signup', {
         email: email,
         password: password
       });
@@ -104,8 +104,8 @@ export const updatePersonalDetails = (personalData) => {
   return axios({
     method: 'POST',
     // url: `http://localhost:8082/api/account/personal_data`,
-    // url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/personal_data`,
-    url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/personal_data`,
+    url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/personal_data`,
+    // url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/personal_data`,
     withCredentials: false,
     data: personalData,
     headers: {
@@ -120,8 +120,8 @@ export const updateDietGoal = (dietGoal) => {
   return axios({
     method: 'POST',
     // url: `http://localhost:8082/api/account/diet_goal`,
-    // url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/diet_goal`,
-    url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/diet_goal`,
+    url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/diet_goal`,
+    // url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/diet_goal`,
     withCredentials: false,
     data: dietGoal,
     headers: {
@@ -136,8 +136,8 @@ export const updateUserRestrictions = (restrictions) => {
   return axios({
     method: 'POST',
     // url: `http://localhost:8082/api/account/diet_restrictions`,
-    // url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/diet_restrictions`,
-    url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/diet_restrictions`,
+    url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account/diet_restrictions`,
+    // url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account/diet_restrictions`,
     withCredentials: false,
     data: restrictions,
     headers: {
@@ -151,8 +151,8 @@ export const deleteAccount = (user) => {
   return axios({
     method: 'DELETE',
     // url: `http://localhost:8082/api/account`,
-    // url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account`,
-    url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account`,
+    url: `https://foodmotion-account-service-hlfxsphkja-ew.a.run.app/api/account`,
+    // url: `https://foodmotion-api-gateway-6xxrfy77.ew.gateway.dev/api/account`,
     withCredentials: false,
     data: user,
     headers: {
