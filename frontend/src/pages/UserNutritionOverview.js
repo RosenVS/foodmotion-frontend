@@ -53,7 +53,8 @@ const MainPage = () => {
 
   const getNutritionData = async () => {
     const dataToSend = {
-      userId: "0b6lwl6FcBPDZrwfBrvIMcR2Gfm1",
+      userId: localStorage.getItem("UserUID"),
+      // userId: "0b6lwl6FcBPDZrwfBrvIMcR2Gfm1",
       date: date.toISOString().split('T')[0]
     };
     console.log(dataToSend)
