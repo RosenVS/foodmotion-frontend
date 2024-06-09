@@ -17,8 +17,27 @@ describe('Food Products Manager', () => {
     cy.contains('Sign In').should('exist');
 
     cy.contains('Sign In').click();
+    // Mock the authentication request to return a JWT token
+    cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+    // cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+      statusCode: 200,
+      body: {
+        token: 'mock-jwt-token-for-manager-with-food-product-role'
+      }
+    }).as('authenticate');
 
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    // Set the token in localStorage
+    cy.visit('http://localhost:3000');
+    cy.window().then((window) => {
+      const token = {
+        roles: ['MANAGER'],
+        subroles: ['FOOD_PRODUCT']
+      };
+      const accessToken = 'mock-jwt-token-for-manager-with-food-product-role.' + btoa(JSON.stringify(token)) + '.signature';
+      window.localStorage.setItem('accessToken', accessToken);
+    });
+
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 200,
       body: [
         {
@@ -87,18 +106,37 @@ describe('Food Products Manager', () => {
       .click() 
   
     cy.url().should('eq', 'http://localhost:3000/login')
-  
+
     cy.get('input[name="email"]').should('exist');
     cy.get('input[name="password"]').should('exist');
-  
+
     cy.get('input[name="email"]').type('vartan@gmail.com');
     cy.get('input[name="password"]').type('Minecraft12.');
-  
+
     cy.contains('Sign In').should('exist');
-  
+
     cy.contains('Sign In').click();
+    // Mock the authentication request to return a JWT token
+    cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+    // cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+      statusCode: 200,
+      body: {
+        token: 'mock-jwt-token-for-manager-with-food-product-role'
+      }
+    }).as('authenticate');
+
+    // Set the token in localStorage
+    cy.visit('http://localhost:3000');
+    cy.window().then((window) => {
+      const token = {
+        roles: ['MANAGER'],
+        subroles: ['FOOD_PRODUCT']
+      };
+      const accessToken = 'mock-jwt-token-for-manager-with-food-product-role.' + btoa(JSON.stringify(token)) + '.signature';
+      window.localStorage.setItem('accessToken', accessToken);
+    });
   
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 200,
       body: [
         {
@@ -160,7 +198,7 @@ describe('Food Products Manager', () => {
     cy.url().should('eq', 'http://localhost:3000/manager/food-products');
     cy.wait(500)
     
-    cy.intercept('DELETE', /http:\/\/localhost:8080\/api\/food-product\/\d+/, {
+    cy.intercept('DELETE', /https:\/\/foodmotion-food-products-service-hlfxsphkja-ew.a.run.app\/api\/food-product\/\d+/, {
       statusCode: 200,
       body: 'OK'
     }).as('deleteFoodProduct');
@@ -182,18 +220,36 @@ describe('Food Products Manager', () => {
       .click() 
   
     cy.url().should('eq', 'http://localhost:3000/login')
-  
+
     cy.get('input[name="email"]').should('exist');
     cy.get('input[name="password"]').should('exist');
-  
+
     cy.get('input[name="email"]').type('vartan@gmail.com');
     cy.get('input[name="password"]').type('Minecraft12.');
-  
+
     cy.contains('Sign In').should('exist');
-  
+
     cy.contains('Sign In').click();
-  
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    // Mock the authentication request to return a JWT token
+    cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+    // cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+      statusCode: 200,
+      body: {
+        token: 'mock-jwt-token-for-manager-with-food-product-role'
+      }
+    }).as('authenticate');
+
+    // Set the token in localStorage
+    cy.visit('http://localhost:3000');
+    cy.window().then((window) => {
+      const token = {
+        roles: ['MANAGER'],
+        subroles: ['FOOD_PRODUCT']
+      };
+      const accessToken = 'mock-jwt-token-for-manager-with-food-product-role.' + btoa(JSON.stringify(token)) + '.signature';
+      window.localStorage.setItem('accessToken', accessToken);
+    });
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 200,
       body: [
         {
@@ -292,7 +348,7 @@ describe('Food Products Manager', () => {
     cy.get('input[name="dietaryRestrictions.vegan"]').type('{selectall}{backspace}');
     cy.get('input[name="dietaryRestrictions.vegan"]').type('true');
 
-    cy.intercept('PUT', /http:\/\/localhost:8080\/api\/food-product\/\d+/, {
+    cy.intercept('PUT', /https:\/\/foodmotion-food-products-service-hlfxsphkja-ew.a.run.app\/api\/food-product\/\d+/, {
       statusCode: 200,
       body: 'OK'
     }).as('updateFoodProduct');
@@ -310,18 +366,37 @@ describe('Food Products Manager', () => {
       .click() 
   
     cy.url().should('eq', 'http://localhost:3000/login')
-  
+
     cy.get('input[name="email"]').should('exist');
     cy.get('input[name="password"]').should('exist');
-  
+
     cy.get('input[name="email"]').type('vartan@gmail.com');
     cy.get('input[name="password"]').type('Minecraft12.');
-  
+
     cy.contains('Sign In').should('exist');
-  
+
     cy.contains('Sign In').click();
+    // Mock the authentication request to return a JWT token
+    cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+    // cy.intercept('POST', 'http://localhost:8080/api/authenticate', {
+      statusCode: 200,
+      body: {
+        token: 'mock-jwt-token-for-manager-with-food-product-role'
+      }
+    }).as('authenticate');
+
+    // Set the token in localStorage
+    cy.visit('http://localhost:3000');
+    cy.window().then((window) => {
+      const token = {
+        roles: ['MANAGER'],
+        subroles: ['FOOD_PRODUCT']
+      };
+      const accessToken = 'mock-jwt-token-for-manager-with-food-product-role.' + btoa(JSON.stringify(token)) + '.signature';
+      window.localStorage.setItem('accessToken', accessToken);
+    });
   
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 200,
       body: [
         {
@@ -420,7 +495,7 @@ describe('Food Products Manager', () => {
     cy.get('input[name="dietaryRestrictions.vegan"]').type('{selectall}{backspace}');
     cy.get('input[name="dietaryRestrictions.vegan"]').type('true');
 
-    cy.intercept('POST', 'http://localhost:8080/api/food-product', {
+    cy.intercept('POST', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 201,
       body: 
         {
@@ -451,7 +526,7 @@ describe('Food Products Manager', () => {
 
     cy.wait('@getFoodProducts'); // Wait for the second GET request to complete.
 
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
         statusCode: 200,
         body: [
             {

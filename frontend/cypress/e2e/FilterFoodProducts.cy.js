@@ -1,8 +1,24 @@
 describe('Filter Food Products', () => {
   it('Signs up and logs in successfully', () => {
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:3000')
+    cy.get('.appBarLoginBtn')
+      .should('exist') 
+      .and('have.text', 'Login') 
+      .click() 
+  
+    cy.url().should('eq', 'http://localhost:3000/login')
 
-    cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+    cy.get('input[name="email"]').should('exist');
+    cy.get('input[name="password"]').should('exist');
+
+    cy.get('input[name="email"]').type('vartan@gmail.com');
+    cy.get('input[name="password"]').type('Minecraft12.');
+
+    cy.contains('Sign In').should('exist');
+
+    cy.contains('Sign In').click();
+
+    cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
       statusCode: 200,
       body: [
         {
@@ -53,13 +69,15 @@ describe('Filter Food Products', () => {
         }
       ]
     }).as('getFoodProducts');
-
+    cy.wait(1000);
+  
     cy.get('#foodproducts')
       .should('exist')
-      .and('have.text', 'Food Products 2')
+      .and('have.text', 'Food Products')
       .click();
 
     cy.url().should('eq', 'http://localhost:3000/daily-nutrition/food-products');
+
     cy.wait(100);
     cy.get('.search-bar').type('Bread');
     cy.wait(100);
@@ -90,6 +108,11 @@ describe('Filter Food Products', () => {
 
     cy.wait(100);
 
-    cy.contains("Login");
-  });
+    cy.get('#avatar').click();
+    cy.wait(100);
+    
+    cy.contains("Logout").click();
+    cy.wait(100);
+
+    cy.contains("Login");  });
 });

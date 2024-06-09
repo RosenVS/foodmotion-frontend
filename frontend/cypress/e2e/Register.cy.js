@@ -20,7 +20,7 @@ describe('User Signup and Login Test', () => {
       cy.contains("Don't have an account? Sign Up");
       cy.get('#actionButton').click();
   
-      cy.intercept('POST', 'http://localhost:8081/api/firebase/signup', (req) => {
+      cy.intercept('POST', 'https://foodmotion-auth-service-hlfxsphkja-ew.a.run.app/api/firebase/signup', (req) => {
         expect(req.body).to.deep.equal({
           email: 'vartan@gmail.com',
           password: 'Minecraft12.'
@@ -37,7 +37,7 @@ describe('User Signup and Login Test', () => {
         });
       });
   
-      cy.intercept('GET', 'http://localhost:8080/api/food-product', {
+      cy.intercept('GET', 'https://foodmotion-food-products-service-hlfxsphkja-ew.a.run.app/api/food-product', {
         statusCode: 200,
         body: [
           {
@@ -93,7 +93,7 @@ describe('User Signup and Login Test', () => {
   
       cy.get('#foodproducts')
         .should('exist')
-        .and('have.text', 'Food Products 2')
+        .and('have.text', 'Food Products')
         .click();
   
       cy.url().should('eq', 'http://localhost:3000/daily-nutrition/food-products');
