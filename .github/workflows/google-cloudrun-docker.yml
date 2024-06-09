@@ -21,7 +21,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
+        
+      - name: Cypress run
+        run: |
+          cd frontend
+          npm run build
+          npm start
 
       - name: Build Image, Push to Registry, Deploy to Cloud Run
         run: |
